@@ -1,0 +1,11 @@
+#!/bin/bash
+services="ufw postfix plymouth"
+for i in $services
+do
+        ps -C $i
+        if [ $? -ne 0 ]
+        then
+                sudo service $i start
+                echo "$i stopped" | mail -s "service monitor" "aslambasha1539@gmail.com"
+        fi
+done
