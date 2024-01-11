@@ -1,0 +1,7 @@
+#!/bin/bash
+total=`ls /home/ubuntu/cleanup | wc -l`
+old_files=`expr $total - 3`
+if [ $old_files -gt 0 ]
+then
+        ls -rt | head -$old_files | xargs rm -rf
+fi
